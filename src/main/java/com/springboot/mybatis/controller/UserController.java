@@ -38,6 +38,6 @@ public class UserController {
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .build();
+                .body(userDto);
     }
 }
