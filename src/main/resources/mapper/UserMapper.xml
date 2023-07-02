@@ -3,9 +3,10 @@
 <!-- 위 코드가 mapper 설정을 하는 코드 -->
 
 <mapper namespace="com.springboot.mybatis.mapper.UserMapper">
-    <insert id="insertUser" parameterType="UserDto">
+    <!-- useGeneratedKeys="true" keyProperty="id"; 매개변수로 넣은 userDto의 id필드에 DB에서 생성된 id값이 담김 -->
+    <insert id="insertUser" parameterType="UserDto" useGeneratedKeys="true" keyProperty="id">
         insert into tb_user(email, password, name, phoneNumber )
-            values(#{email}, #{password}, #{name}, #{phoneNumber})
+        values(#{email}, #{password}, #{name}, #{phoneNumber})
     </insert>
 
     <select id="selectUser" parameterType="UserDto" resultType="UserDto">
