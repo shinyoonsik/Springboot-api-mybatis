@@ -1,6 +1,7 @@
 package com.springboot.mybatis.service.impl;
 
 
+import com.github.pagehelper.PageHelper;
 import com.springboot.mybatis.mapper.UserMapper;
 import com.springboot.mybatis.model.dto.UserDto;
 import com.springboot.mybatis.service.UserService;
@@ -10,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -43,6 +44,13 @@ public class UserServiceImpl implements UserService {
         LOGGER.info("조회한 user: {}", userDto);
 
         return userDto;
+    }
+
+    @Override
+    public List<UserDto> getUsers(int pageNum, int pageSize) {
+        // PageHelper는 startPage 메서드를 호출한 후에 다음으로 실행되는 MyBatis 쿼리에만 페이징 처리를 적용된다
+        PageHelper.startPage(pageNum, pageSize);
+        return userMapper.selectUsers();
     }
 
     @Override

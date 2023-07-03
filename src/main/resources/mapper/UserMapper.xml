@@ -14,4 +14,9 @@
         from tb_user
         where id = #{id}
     </select>
+    
+    <select id="selectUsers" resultType="UserDto">
+        select *
+        from tb_user
+    </select>
 </mapper>

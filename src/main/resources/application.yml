@@ -7,4 +7,14 @@ spring:
 
 mybatis:
   mapper-locations: mapper/*.xml
-  type-aliases-package: com.springboot.mybatis.model.dto # parameterType? resultType? ??path
+  type-aliases-package: com.springboot.mybatis.model.dto
+
+#paging
+pagehelper:
+  helper-dialect: postgresql
+  auto-dialect: true
+  page-size-zero: false
+  reasonable: true
+
+
+
